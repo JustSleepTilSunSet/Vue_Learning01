@@ -1,9 +1,9 @@
 <template>
     <div>
         <button @click="quicklyLogin"> {{this.buttonName}} </button>
-        <div v-show="showHelloMessage" style="border: dashed red; height: 50%; width: 50%; background-color: powderblue; align: center;  margin-left: auto; margin-right: auto;">
+        <div v-show="showSignUpFrame" style="border: dashed red; height: 50%; width: 50%; background-color: powderblue; align: center;  margin-left: auto; margin-right: auto;">
             User Name:
-            <input v-model="userName">
+            <input v-model="userName" style="height: 30%; width: 30%">
                 <p>Logined user: {{ userName }}</p>
                 <div v-if = "checkUserName">
                     {{alertWindow()}}
@@ -29,7 +29,6 @@ export default {
         };
     },
     methods: {
-      // `this` points to the vm instance
         quicklyLogin: function () {
             this.showFrame = !this.showFrame;
             if(this.showFrame){
@@ -39,26 +38,29 @@ export default {
             }
         },
         sendUserName: function(){
-            this.$emit("Submit-Trigger", this.userName);
-            console.log("Submit-Trigger", this.userName);
+            if(this.userName.length != 0){
+                this.showFrame = false;
+                this.buttonName = "Sign by name";
+                this.$emit("Submit-Trigger", this.userName);//會結束函數執行。
+                console.log("Submit-Trigger", this.userName);
+            }else if (this.userName.length == 0){
+                alert("不接受使用空白名字提交!");
+            }
         },
         alertWindow: function(){
-            alert("超過字數上限!!");
+            alert(this.inValidDetail);
             this.showFrame = false;
             this.buttonName = "Sign by name";
             this.loginedUser = "";
             this.userName = "";
             this.inValidUserName = false;
             this.inValidDetail ="";
-        },
-        triggerAlert: function(){
-            this.$emit("trigger-Alert");
         }
 
     },
     computed: {
       // `this` points to the vm instance
-        showHelloMessage(){
+        showSignUpFrame(){
             return this.showFrame; //不可以再對this的值做修改。
         },
         checkUserName(){
@@ -69,9 +71,10 @@ export default {
         }
     },
     watch: {
-        userName: function(val){//val為監聽的參數，此處監聽為userName
+        userName: function(val){//避免輸入過長名字
             if(val.length > 25){
                 this.inValidUserName = true;
+                this.inValidDetail ="名稱過長";
             }
         }
     }

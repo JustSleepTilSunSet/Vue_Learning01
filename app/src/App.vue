@@ -1,50 +1,23 @@
 <template>
   <div id="app">
+  <!--Title rectangle-->
     <div id="parent">
       <div class="child">
         <div v-show="isEmptyName">
           <h2>Hi, {{loginedUserName}} .</h2>
         </div>
         <div style="float:right">
-          <img alt="Vue logo" src="./assets/logo.png" style="width:50%;height:50%">
+          <img alt="Vue logo" src="./assets/logo.png" style="float:top; width:20%;height:20%">
             <RegisterButton @Submit-Trigger="SubmitTrigger">
             <moduleName msg="Plus button and Subtract button"/>
           </RegisterButton>
         </div>
       </div>
-    <div class="child2">
-      大意及段落設計:
-    </div>
-    <div class="child">
-      活動區塊段落1
-    </div>
-    <div class="child">
-      活動區塊段落2
-    </div>
-    <div class="child">
-      活動區塊段落3
-    </div>
-    <div class="child">
-      活動區塊段落4
-    </div>
-    <div class="child">
-      活動區塊段落5
-    </div>
-    <div class="child">
-      活動區塊段落6
-    </div>
-    <div class="child">
-      活動區塊段落7
-    </div>
-    <div class="child">
-      活動區塊段落8
-    </div>
-    <div class="child">
-      活動區塊段落9
-    </div>
-    <div class="child">
-      活動區塊段落10
-    </div>
+  <div style= "text-align:left; height:200px; margin:20px;background:#DDFF77;font-size:22px;">
+    章節一覽
+  </div>
+  <!--Content rectangle-->
+      <DivTemplate @Get-Content-Pos="GetContentPos" ></DivTemplate>
   </div>
     
   </div>
@@ -52,11 +25,14 @@
 
 <script>
 import RegisterButton from './components/RegisterButton.vue';
+import DivTemplate from './components/DivTemplate.vue';
+
 export default {
   name: 'App',
   data() {
         return {
-            loginedUserName: ""
+            loginedUserName: "",
+            elePosition:[]
         };
   },
   mounted(){
@@ -67,6 +43,9 @@ export default {
       localStorage.setItem("userName", value);
       this.loginedUserName = localStorage.getItem("userName");
       alert("註冊成功!!");
+    },
+    GetContentPos: function(value){
+      console.log(`main value: ${JSON.stringify(value,null,2)}`);
     }
   },
   computed:{
@@ -75,7 +54,8 @@ export default {
     }
   },
   components: {
-    RegisterButton
+    RegisterButton,
+    DivTemplate
   }
 }
 </script>
@@ -90,13 +70,24 @@ export default {
   margin-top: 60px;
 }
 
-/* Designing for Content */
 #parent{
   background: #999;
   padding:10px;
 }
 .child {background:#ccc; height:200px; margin:20px;}
 .child2 {background:#DDFF77; height:200px; margin:20px;}
+.child3 {background:#9fffa4; height:200px; margin:20px;}
 
-     
+::-webkit-scrollbar {
+    width: 20px;
+}
+::-webkit-scrollbar-track {
+    background: rgb(192, 192, 192);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(154, 101, 16);
+    border-radius: 10px;
+}
+
 </style>
