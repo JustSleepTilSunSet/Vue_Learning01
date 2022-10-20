@@ -1,0 +1,1 @@
+exports.COUNT_CONTENT = 10;

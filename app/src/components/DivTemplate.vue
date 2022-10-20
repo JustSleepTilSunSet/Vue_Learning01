@@ -9,7 +9,7 @@
 </template>
 
 <script>
-const COUNT_CONTENT = 10;
+const {COUNT_CONTENT} = require('../constants');
 
 export default {
   data() {

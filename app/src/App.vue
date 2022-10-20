@@ -13,9 +13,7 @@
           </RegisterButton>
         </div>
       </div>
-  <div style= "text-align:left; height:200px; margin:20px;background:#DDFF77;font-size:22px;">
-    章節一覽
-  </div>
+    <BuildOutLine></BuildOutLine>
   <!--Content rectangle-->
       <DivTemplate @Get-Content-Pos="GetContentPos" ></DivTemplate>
   </div>
@@ -26,6 +24,7 @@
 <script>
 import RegisterButton from './components/RegisterButton.vue';
 import DivTemplate from './components/DivTemplate.vue';
+import BuildOutLine from './components/BuildOutLine.vue';
 
 export default {
   name: 'App',
@@ -55,7 +54,8 @@ export default {
   },
   components: {
     RegisterButton,
-    DivTemplate
+    DivTemplate,
+    BuildOutLine
   }
 }
 </script>
