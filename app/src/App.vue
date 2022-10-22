@@ -9,11 +9,12 @@
         <div style="float:right">
           <img alt="Vue logo" src="./assets/logo.png" style="float:top; width:20%;height:20%">
             <RegisterButton @Submit-Trigger="SubmitTrigger">
-            <moduleName msg="Plus button and Subtract button"/>
           </RegisterButton>
         </div>
       </div>
-    <BuildOutLine></BuildOutLine>
+
+  <!--Outline rectangle-->
+      <BuildOutLine :elePosition="elePosition"></BuildOutLine>
   <!--Content rectangle-->
       <DivTemplate @Get-Content-Pos="GetContentPos" ></DivTemplate>
   </div>
@@ -45,6 +46,7 @@ export default {
     },
     GetContentPos: function(value){
       console.log(`main value: ${JSON.stringify(value,null,2)}`);
+      this.elePosition = value;
     }
   },
   computed:{
@@ -71,12 +73,20 @@ export default {
 }
 
 #parent{
-  background: #999;
+  background: rgb(255, 255, 255);
   padding:10px;
 }
-.child {background:#ccc; height:200px; margin:20px;}
-.child2 {background:#DDFF77; height:200px; margin:20px;}
-.child3 {background:#9fffa4; height:200px; margin:20px;}
+.child {
+  background:#ccc;
+   height:200px;
+  margin:20px;
+}
+.child2 {
+  background:#DDFF77; height:200px; margin:20px;
+}
+.child3 {
+  background:#9fffa4; height:200px; margin:20px;
+}
 
 ::-webkit-scrollbar {
     width: 20px;

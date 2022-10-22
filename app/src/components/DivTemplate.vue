@@ -19,14 +19,11 @@ export default {
     };
   },
   beforeMount(){
-    for(let index = 1 ; index <= COUNT_CONTENT; index++){
+    for(let index = 0 ; index < COUNT_CONTENT; index++){
       this.contents.push('測試文章段落' + " " +index);
     }
   },
   mounted() {
-    /** TODO */ 
-    //QUESTION: 為什麼我完成掛載但我無法對dom上面的節點做操作。
-    //ANSWER: vue元件週期背景待補
     //建立測試區塊。
     for(let index = 1 ; index <= COUNT_CONTENT; index++){
         var element = document.getElementById(index);
