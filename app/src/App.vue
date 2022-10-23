@@ -14,9 +14,10 @@
       </div>
 
   <!--Outline rectangle-->
-      <BuildOutLine :elePosition="elePosition"></BuildOutLine>
+      <BuildOutLine :elePosition="elePosition"  @Go-To="GoToContent"></BuildOutLine>
+
   <!--Content rectangle-->
-      <DivTemplate @Get-Content-Pos="GetContentPos" ></DivTemplate>
+      <DivTemplate :goToIndex="goToIndex" @Get-Content-Pos="GetContentPos" ></DivTemplate>
   </div>
     
   </div>
@@ -32,7 +33,8 @@ export default {
   data() {
         return {
             loginedUserName: "",
-            elePosition:[]
+            elePosition:[],
+            goToIndex:-1
         };
   },
   mounted(){
@@ -45,8 +47,10 @@ export default {
       alert("註冊成功!!");
     },
     GetContentPos: function(value){
-      console.log(`main value: ${JSON.stringify(value,null,2)}`);
       this.elePosition = value;
+    },
+    GoToContent: function(value){
+      this.goToIndex = value;
     }
   },
   computed:{
@@ -73,7 +77,7 @@ export default {
 }
 
 #parent{
-  background: rgb(255, 255, 255);
+  background: rgb(216, 215, 215);
   padding:10px;
 }
 .child {
