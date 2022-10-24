@@ -27,6 +27,8 @@
 import RegisterButton from './components/RegisterButton.vue';
 import DivTemplate from './components/DivTemplate.vue';
 import BuildOutLine from './components/BuildOutLine.vue';
+import firstRequest from './client/sampleServerClient';
+
 
 export default {
   name: 'App',
@@ -39,6 +41,7 @@ export default {
   },
   mounted(){
     this.loginedUserName = localStorage.getItem("userName");
+    firstRequest();
   },
   methods:{
     SubmitTrigger: function(value){

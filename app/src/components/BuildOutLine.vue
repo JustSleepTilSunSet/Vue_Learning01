@@ -28,8 +28,7 @@ export default {
             elePosIterator: [],
             isMouseOver: false,
             orgId: {},
-            contentPos: [],
-            disabled: false
+            contentPos: []
         };
     },
     beforeMount() {
