@@ -12,12 +12,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(cors({
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204
-}));
+app.use(cors(require('./configs/cors').cors));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,12 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.post('/testing', (req, res)=>{
-  console.log(`* Receive called from ${req.originalUrl} and ${JSON.stringify(req.body,null,2)}.`);
-  return res.json({
-    "hh":"hh"
-  })
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

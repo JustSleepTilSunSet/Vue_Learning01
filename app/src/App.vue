@@ -27,8 +27,7 @@
 import RegisterButton from './components/RegisterButton.vue';
 import DivTemplate from './components/DivTemplate.vue';
 import BuildOutLine from './components/BuildOutLine.vue';
-import firstRequest from './client/sampleServerClient';
-
+import sampleServerClient from './client/sampleServerClient';
 
 export default {
   name: 'App',
@@ -41,13 +40,16 @@ export default {
   },
   mounted(){
     this.loginedUserName = localStorage.getItem("userName");
-    firstRequest();
   },
   methods:{
-    SubmitTrigger: function(value){
+    SubmitTrigger: async function(value){
       localStorage.setItem("userName", value);
       this.loginedUserName = localStorage.getItem("userName");
       alert("註冊成功!!");
+      let res = (await sampleServerClient.signUp({
+        userName: this.loginedUserName
+      })).userData;
+      console.log(`註冊成功: `, res);
     },
     GetContentPos: function(value){
       this.elePosition = value;

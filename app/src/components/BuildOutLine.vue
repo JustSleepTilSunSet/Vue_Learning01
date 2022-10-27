@@ -87,9 +87,6 @@ export default {
         },
         innerLeaveLog: function (value) {
             value.currentTarget.id = "others";
-        },
-        haloWorld: function(){
-
         }
     },
     watch: {

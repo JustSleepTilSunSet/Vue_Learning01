@@ -52,9 +52,6 @@ export default {
         return "shake";
       }
         return "child3";
-    },
-    async testing(){
-      return "shake";
     }
   },
   watch:{
