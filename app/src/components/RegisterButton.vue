@@ -4,11 +4,14 @@
         <div v-show="showSignUpFrame" style="border: dashed red; height: 50%; width: 50%; background-color: powderblue; align: center;  margin-left: auto; margin-right: auto;">
             User Name:
             <input v-model="userName" style="height: 30%; width: 30%">
-                <p>Logined user: {{ userName }}</p>
                 <div v-if = "checkUserName">
                     {{alertWindow()}}
                 </div>
-                <button @click="sendUserName"> {{this.sendNameButton}} </button>
+            <br/>
+            <!-- Mail -->
+                Mail-address:
+            <input v-model="mail" style="height: 30%; width: 30%">
+            <button @click="sendUserName"> {{this.sendNameButton}} </button>
         </div>
     </div>
 </template>
@@ -24,6 +27,7 @@ export default {
             sendNameButton: "Send name",
             loginedUser: "",
             userName: "",
+            mail:"",
             inValidUserName: false,
             inValidDetail:""
         };
@@ -41,8 +45,8 @@ export default {
             if(this.userName.length != 0){
                 this.showFrame = false;
                 this.buttonName = "Sign by name";
-                this.$emit("Submit-Trigger", this.userName);//會結束函數執行。
-                console.log("Submit-Trigger", this.userName);
+                this.$emit("Submit-Trigger", this.userName, this.mail);//會結束函數執行。
+                console.log("Submit-Trigger", this.userName, this.mail);
             }else if (this.userName.length == 0){
                 alert("不接受使用空白名字提交!");
             }

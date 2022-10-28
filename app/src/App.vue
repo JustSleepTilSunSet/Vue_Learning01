@@ -14,10 +14,10 @@
       </div>
 
   <!--Outline rectangle-->
-      <BuildOutLine :elePosition="elePosition"  @Go-To="GoToContent"></BuildOutLine>
+      <BuildOutLine></BuildOutLine>
 
   <!--Content rectangle-->
-      <DivTemplate :goToIndex="goToIndex" @Get-Content-Pos="GetContentPos" ></DivTemplate>
+      <DivTemplate :goToIndex="goToIndex" ></DivTemplate>
   </div>
     
   </div>
@@ -28,6 +28,10 @@ import RegisterButton from './components/RegisterButton.vue';
 import DivTemplate from './components/DivTemplate.vue';
 import BuildOutLine from './components/BuildOutLine.vue';
 import sampleServerClient from './client/sampleServerClient';
+const EVENT_INDEX_DEFINE = {
+  USER_NAME: 0,
+  MAIL: 1
+}
 
 export default {
   name: 'App',
@@ -42,17 +46,15 @@ export default {
     this.loginedUserName = localStorage.getItem("userName");
   },
   methods:{
-    SubmitTrigger: async function(value){
-      localStorage.setItem("userName", value);
+    SubmitTrigger: async function(... values){
+      localStorage.setItem("userName", values[EVENT_INDEX_DEFINE.USER_NAME]);
       this.loginedUserName = localStorage.getItem("userName");
       alert("註冊成功!!");
       let res = (await sampleServerClient.signUp({
-        userName: this.loginedUserName
-      })).userData;
+        userName: values[EVENT_INDEX_DEFINE.USER_NAME],
+        mail: values[EVENT_INDEX_DEFINE.MAIL]
+      })).serverRes;
       console.log(`註冊成功: `, res);
-    },
-    GetContentPos: function(value){
-      this.elePosition = value;
     },
     GoToContent: function(value){
       this.goToIndex = value;
@@ -94,7 +96,10 @@ export default {
   background:#DDFF77; height:200px; margin:20px;
 }
 .child3 {
-  background:#9fffa4; height:200px; margin:20px;
+  background:#9fffa4;
+   height:200px;
+   margin:40px;
+   padding:20px;
 }
 
 ::-webkit-scrollbar {

@@ -4,9 +4,9 @@
             <span style="text-align:left; height:200px; margin:20px;font-size:15px;">
                 <h1>章節一覽</h1>
                 <div v-for="(item, index) in contents" :key='index' v-bind:id="'outline_'+ (index)"
-                    @click="ShowLog($event)" @mouseover="focusLog($event)" @mouseleave="leaveLog($event)"
+                    @click="clickTargetEvent(index)" @mouseover="focusTargetEvent($event)" @mouseleave="leaveTargetEvent($event)"
                     style="border: thick double #32a1ce;"> <!-- 互動模板 -->
-                    <div id="others" @mouseover="innerFocusLog($event)" @mouseleave="innerLeaveLog($event)"><!-- 樣式模板 -->
+                    <div id="others" @mouseover="innerFocusTargetEvent($event)" @mouseleave="innerLeaveTargetEvent($event)"><!-- 樣式模板 -->
                         <h2> {{item}} </h2>
                     </div>
                 </div>
@@ -19,13 +19,9 @@
 const { COUNT_CONTENT } = require('../constants');
 
 export default {
-    props: {
-        elePosition: Array
-    },
     data() {
         return {
             contents: [],
-            elePosIterator: [],
             isMouseOver: false,
             orgId: {},
             contentPos: []
@@ -40,20 +36,11 @@ export default {
         }
     },
     methods: {
-        ShowLog: function (value) {
-            let tp = ((value.currentTarget.id) + "").split("_");
-            let index = tp[tp.length - 1];
-            let goTo;
-            for (let [key, value] of Object.entries(this.elePosition)) {
-                if (key == (index)) {
-                    goTo = value;
-                    break;
-                }
-            }
-            window.scrollTo(goTo.x, goTo.y - 200);
-            this.$emit("Go-To", goTo.index);
+        clickTargetEvent: function (index) {
+            window.location.href = `#`
+            window.location.href = `#child${index}`
         },
-        focusLog: function (value) {
+        focusTargetEvent: function (value) {
             //Step1. 紀錄原先id。
             let tp = this.orgId[value.currentTarget.id];
 
@@ -67,7 +54,7 @@ export default {
             delete this.orgId[tp];
             this.isMouseOver = true;
         },
-        leaveLog: function (value) {
+        leaveTargetEvent: function (value) {
             //Step1. 紀錄原先id。
             let tp = value.currentTarget.id;
 
@@ -82,16 +69,11 @@ export default {
 
             this.isMouseOver = false;
         },
-        innerFocusLog: function (value) {
+        innerFocusTargetEvent: function (value) {
             value.currentTarget.id = "selected";
         },
-        innerLeaveLog: function (value) {
+        innerLeaveTargetEvent: function (value) {
             value.currentTarget.id = "others";
-        }
-    },
-    watch: {
-        elePosIterator: function () {
-            this.$emit("Get-Content-Pos", this.elePosIterator);
         }
     }
 }
@@ -100,19 +82,5 @@ export default {
 <style>
 #selected {
     background-color: yellow;
-}
-.slidein {
-  animation: 3s slidein;
-}
-@keyframes slidein {
-  0% {
-    transform: scaleX(0);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
-#others {
-    font-size: 15px;
 }
 </style>
