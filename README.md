@@ -11,6 +11,8 @@
   - vue version: 2.7.13
 
 ## 使用方式說明
+- 建議使用`chrome`開啟。
+
   1. 先選擇sampleServer的資料夾執行下述之指令:
 ``` bash
 	npm install

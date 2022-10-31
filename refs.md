@@ -18,3 +18,5 @@
     [17]vue.js怎麼在v-for中使v-bind:class跟著變量值改變:https://segmentfault.com/q/1010000007009489
         [17 - 1] https://vuejs.org/guide/essentials/class-and-style.html <== 看Binding HTML Classes 這個章節比較重要，某函數之值可以被模板屬性代替使用。
     [18] 晃動動畫程式碼部分 https://vuejs.org/guide/extras/animation.html
+    [19] window scroll to https://stackoverflow.com/questions/49636727/why-is-scroll-behaviorsmooth-not-working-but-javascript-window-scroll-smooth-is
+         - 採用 Normajean 的解法。

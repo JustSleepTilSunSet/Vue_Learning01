@@ -2,7 +2,7 @@
   <!--html-->
   <div id="subDiv">
     <div v-for="(item, index) in contents" :key='index' v-bind:id="`child${index}`" class="child3"
-      :ref="`child${index}`" @click="itemSelected(item, index)">
+      :ref="`child${index}`" >
       {{ item.content }}
     </div>
   </div>
@@ -43,12 +43,15 @@ export default {
     hashTrigger() {
       const hash = window.location.hash;
       if (hash && hash !== '') {
-        let div = document.querySelector(hash)
+        // 視窗滑動:
+        let div = document.querySelector(hash);
         window.scroll({
           top: div.offsetTop,
           left: 0,
           behavior: 'smooth'
         });
+
+        // 設定醒目提示：
         setTimeout(() => {
           div.classList.add('shake')
           setTimeout(() => {
@@ -56,16 +59,16 @@ export default {
           }, 920)
         }, 500)
       }
-
-    },
-    itemSelected(goToIndex) {
-      this.$refs[`child${goToIndex}`][0].classList.add('is-active');
     }
   }
 }
 </script>
 
 <style>
+* {
+  scroll-behavior: smooth;
+}
+
 .shake {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);

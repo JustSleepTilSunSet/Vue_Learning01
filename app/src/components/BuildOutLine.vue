@@ -37,8 +37,8 @@ export default {
     },
     methods: {
         clickTargetEvent: function (index) {
-            window.location.href = `#`
-            window.location.href = `#child${index}`
+            window.location.href = `#`;
+            window.location.href = `#child${index}`;
         },
         focusTargetEvent: function (value) {
             //Step1. 紀錄原先id。
