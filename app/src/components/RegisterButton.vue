@@ -46,7 +46,6 @@ export default {
                 this.showFrame = false;
                 this.buttonName = "Sign by name";
                 this.$emit("Submit-Trigger", this.userName, this.mail);//會結束函數執行。
-                console.log("Submit-Trigger", this.userName, this.mail);
             }else if (this.userName.length == 0){
                 alert("不接受使用空白名字提交!");
             }

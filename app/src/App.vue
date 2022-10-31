@@ -49,12 +49,14 @@ export default {
     SubmitTrigger: async function(... values){
       localStorage.setItem("userName", values[EVENT_INDEX_DEFINE.USER_NAME]);
       this.loginedUserName = localStorage.getItem("userName");
-      alert("註冊成功!!");
-      let res = (await sampleServerClient.signUp({
+      let sampleSRes = (await sampleServerClient.signUp({
         userName: values[EVENT_INDEX_DEFINE.USER_NAME],
         mail: values[EVENT_INDEX_DEFINE.MAIL]
       })).serverRes;
-      console.log(`註冊成功: `, res);
+      if(typeof sampleSRes === 'undefined')
+        alert("Sign up fail");
+      else
+        alert("註冊成功!!");
     },
     GoToContent: function(value){
       this.goToIndex = value;

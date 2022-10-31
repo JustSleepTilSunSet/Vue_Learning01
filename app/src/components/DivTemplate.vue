@@ -48,7 +48,7 @@ export default {
           top: div.offsetTop,
           left: 0,
           behavior: 'smooth'
-        })
+        });
         setTimeout(() => {
           div.classList.add('shake')
           setTimeout(() => {
