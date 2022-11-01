@@ -2,7 +2,7 @@
   <div id="app">
   <!--Title rectangle-->
     <div id="parent">
-      <div class="child">
+      <div class="title">
         <div v-show="isEmptyName">
           <h2>Hi, {{loginedUserName}} .</h2>
         </div>
@@ -28,7 +28,7 @@ import RegisterButton from './components/RegisterButton.vue';
 import DivTemplate from './components/DivTemplate.vue';
 import BuildOutLine from './components/BuildOutLine.vue';
 import sampleServerClient from './client/sampleServerClient';
-const EVENT_INDEX_DEFINE = {
+const EVENT_VALUE_DEFINE = {
   USER_NAME: 0,
   MAIL: 1
 }
@@ -47,14 +47,14 @@ export default {
   },
   methods:{
     SubmitTrigger: async function(... values){
-      localStorage.setItem("userName", values[EVENT_INDEX_DEFINE.USER_NAME]);
+      localStorage.setItem("userName", values[EVENT_VALUE_DEFINE.USER_NAME]);
       this.loginedUserName = localStorage.getItem("userName");
       let sampleSRes = (await sampleServerClient.signUp({
-        userName: values[EVENT_INDEX_DEFINE.USER_NAME],
-        mail: values[EVENT_INDEX_DEFINE.MAIL]
+        userName: values[EVENT_VALUE_DEFINE.USER_NAME],
+        mail: values[EVENT_VALUE_DEFINE.MAIL]
       })).serverRes;
       if(typeof sampleSRes === 'undefined')
-        alert("Sign up fail");
+        alert("註冊失敗!!");
       else
         alert("註冊成功!!");
     },
@@ -89,19 +89,11 @@ export default {
   background: rgb(216, 215, 215);
   padding:10px;
 }
-.child {
+
+.title {
   background:#ccc;
    height:200px;
   margin:20px;
-}
-.child2 {
-  background:#DDFF77; height:200px; margin:20px;
-}
-.child3 {
-  background:#9fffa4;
-   height:200px;
-   margin:40px;
-   padding:20px;
 }
 
 ::-webkit-scrollbar {

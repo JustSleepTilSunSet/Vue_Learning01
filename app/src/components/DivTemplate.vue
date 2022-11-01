@@ -1,7 +1,7 @@
 <template>
   <!--html-->
   <div id="subDiv">
-    <div v-for="(item, index) in contents" :key='index' v-bind:id="`child${index}`" class="child3"
+    <div v-for="(item, index) in contents" :key='index' v-bind:id="`child${index}`" class="content"
       :ref="`child${index}`" >
       {{ item.content }}
     </div>
@@ -73,9 +73,12 @@ export default {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
 }
-.child3.is-active {
-    background-color: bisque;
-  }
+.content {
+  background:#9fffa4;
+   height:200px;
+   margin:40px;
+   padding:20px;
+}
 
 @keyframes shake {
 

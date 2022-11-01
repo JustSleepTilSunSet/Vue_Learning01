@@ -1,20 +1,5 @@
 import axios from 'axios';
 
-async function firstRequest(){
-    try{
-        let option = {
-            method:"POST",
-            url:"http://localhost:3000/testing",
-            responseType:"json",
-            data: {}
-          };
-        let response = await axios(option);
-        return response.data;
-    }catch(error){
-        console.log(error);
-    }
-}
-
 async function signUp(userObj){
     try{
         let option = {
@@ -35,6 +20,5 @@ async function signUp(userObj){
 }
 
 export default {
-    firstRequest,
     signUp
 }
