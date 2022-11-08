@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <NavBar></NavBar>
+    <BigBanner></BigBanner>
+    <button id="outLine" style="width:100%; height:150px; font-size: 20px; background-color: aquamarine;" @click="openOutLine()"> 點擊後開啟大綱模式 </button>
+    <BuildOutLine v-if="isOpenOutLine">{{this.openOutLineContent}}</BuildOutLine>
+    <content1></content1>
   <!--Title rectangle-->
     <div id="parent">
       <div class="title">
@@ -12,9 +17,7 @@
           </RegisterButton>
         </div>
       </div>
-
-  <!--Outline rectangle-->
-      <BuildOutLine></BuildOutLine>
+      <!--Outline rectangle-->
 
   <!--Content rectangle-->
       <DivTemplate :goToIndex="goToIndex" ></DivTemplate>
@@ -27,7 +30,10 @@
 import RegisterButton from './components/RegisterButton.vue';
 import DivTemplate from './components/DivTemplate.vue';
 import BuildOutLine from './components/BuildOutLine.vue';
+import NavBar from './components/NavBar.vue';
 import sampleServerClient from './client/sampleServerClient';
+import BigBanner from './components/BigBanner.vue'
+
 const EVENT_VALUE_DEFINE = {
   USER_NAME: 0,
   MAIL: 1
@@ -39,7 +45,9 @@ export default {
         return {
             loginedUserName: "",
             elePosition:[],
-            goToIndex:-1
+            goToIndex:-1,
+            isOpenOutLine:false,
+            openOutLineContent:"點擊後開啟大綱模式"
         };
   },
   mounted(){
@@ -60,6 +68,10 @@ export default {
     },
     GoToContent: function(value){
       this.goToIndex = value;
+    },
+    openOutLine: function(){
+      this.isOpenOutLine=!this.isOpenOutLine;
+      this.openOutLineContent="關閉大綱模式";
     }
   },
   computed:{
@@ -70,7 +82,9 @@ export default {
   components: {
     RegisterButton,
     DivTemplate,
-    BuildOutLine
+    BuildOutLine,
+    NavBar,
+    BigBanner
   }
 }
 </script>
@@ -106,6 +120,19 @@ export default {
 ::-webkit-scrollbar-thumb {
     background: rgb(154, 101, 16);
     border-radius: 10px;
+}
+
+
+.heart {
+	font-size: 150px;
+	color: #e00;
+	animation: beat .25s infinite alternate;
+	transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat{
+	to { transform: scale(1.4); }
 }
 
 </style>

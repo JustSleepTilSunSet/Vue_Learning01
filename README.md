@@ -45,3 +45,6 @@
 # 使用技術
   - Vue Cli
   - NodeJs
+  
+# 使用範本
+https://www.figma.com/file/EGWFKgjmtMw9ggi0aQ9ZTs/TheF2E?node-id=0%3A1

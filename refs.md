@@ -20,3 +20,7 @@
     [18] 晃動動畫程式碼部分 https://vuejs.org/guide/extras/animation.html
     [19] window scroll to https://stackoverflow.com/questions/49636727/why-is-scroll-behaviorsmooth-not-working-but-javascript-window-scroll-smooth-is
          - 採用 Normajean 的解法。
+
+https://codepen.io/cjrh/pen/qEgbVw
+https://www.wibibi.com/info.php?tid=CSS_DIV_%E8%83%8C%E6%99%AF%E9%A1%8F%E8%89%B2
+https://vuejs.org/style-guide/rules-essential.html
