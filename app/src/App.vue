@@ -2,11 +2,11 @@
   <div id="app">
     <NavBar></NavBar>
     <BigBanner></BigBanner>
-    <button id="outLine" style="width:100%; height:150px; font-size: 20px; background-color: aquamarine;" @click="openOutLine()"> 點擊後開啟大綱模式 </button>
-    <BuildOutLine v-if="isOpenOutLine">{{this.openOutLineContent}}</BuildOutLine>
-    <content1></content1>
-  <!--Title rectangle-->
-    <div id="parent">
+    <!-- <button id="outLine" style="width:100%; height:150px; font-size: 20px; background-color: aquamarine;" @click="openOutLine()"> 點擊後開啟大綱模式 </button> -->
+    <!-- <BuildOutLine v-if="isOpenOutLine">{{this.openOutLineContent}}</BuildOutLine> -->
+    <F2EContent1></F2EContent1>
+    
+    <!-- <div id="parent">
       <div class="title">
         <div v-show="isEmptyName">
           <h2>Hi, {{loginedUserName}} .</h2>
@@ -17,22 +17,23 @@
           </RegisterButton>
         </div>
       </div>
-      <!--Outline rectangle-->
-
-  <!--Content rectangle-->
       <DivTemplate :goToIndex="goToIndex" ></DivTemplate>
-  </div>
+  </div> -->
     
+  <DivTemplate :goToIndex="goToIndex" ></DivTemplate>
+  <!-- <F2EContent1_2Vue></F2EContent1_2Vue> -->
   </div>
 </template>
 
 <script>
-import RegisterButton from './components/RegisterButton.vue';
+// import RegisterButton from './components/RegisterButton.vue';
 import DivTemplate from './components/DivTemplate.vue';
-import BuildOutLine from './components/BuildOutLine.vue';
+// import BuildOutLine from './components/BuildOutLine.vue';
 import NavBar from './components/NavBar.vue';
 import sampleServerClient from './client/sampleServerClient';
 import BigBanner from './components/BigBanner.vue'
+import F2EContent1 from './components/F2EContent1.vue'
+// import F2EContent1_2Vue from './components/F2EContent1_2.vue';
 
 const EVENT_VALUE_DEFINE = {
   USER_NAME: 0,
@@ -80,23 +81,25 @@ export default {
     }
   },
   components: {
-    RegisterButton,
+    // RegisterButton,
     DivTemplate,
-    BuildOutLine,
+    // F2EContent1_2Vue,
+    // BuildOutLine,
     NavBar,
-    BigBanner
+    BigBanner,
+    F2EContent1
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /* 主頁 */
+  position: relative;
+  width: 1920px;
+  height: 11880px;
+  background: #FFFFFF;
+  background-image: url('./assets/mainPage.png');
 }
 
 #parent{
@@ -121,18 +124,4 @@ export default {
     background: rgb(154, 101, 16);
     border-radius: 10px;
 }
-
-
-.heart {
-	font-size: 150px;
-	color: #e00;
-	animation: beat .25s infinite alternate;
-	transform-origin: center;
-}
-
-/* Heart beat animation */
-@keyframes beat{
-	to { transform: scale(1.4); }
-}
-
 </style>

@@ -20,7 +20,10 @@
     [18] 晃動動畫程式碼部分 https://vuejs.org/guide/extras/animation.html
     [19] window scroll to https://stackoverflow.com/questions/49636727/why-is-scroll-behaviorsmooth-not-working-but-javascript-window-scroll-smooth-is
          - 採用 Normajean 的解法。
-
-https://codepen.io/cjrh/pen/qEgbVw
-https://www.wibibi.com/info.php?tid=CSS_DIV_%E8%83%8C%E6%99%AF%E9%A1%8F%E8%89%B2
-https://vuejs.org/style-guide/rules-essential.html
+    [20] 動畫套用教學: 
+        - https://codepen.io/cjrh/pen/qEgbVw
+        - https://animate.style/
+        - https://codepen.io/ysnoritnk/pen/XvMaaV
+    [21] 巢狀div 教學: https://www.codespeedy.com/how-nested-div-tag-work-in-html-and-using-css/
+    [22]style 套用教學: https://www.wibibi.com/info.php?tid=CSS_DIV_%E8%83%8C%E6%99%AF%E9%A1%8F%E8%89%B2
+    [23]vue lint因為命名名稱不給過的時候參考: https://vuejs.org/style-guide/rules-essential.html

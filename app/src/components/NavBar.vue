@@ -1,14 +1,12 @@
 <template>
-    <div>
         <div id = "navbar" v-bind:style="{'position':titlePositon}">
-            <img align="left" src="../assets/header/TheF2e_logo.png" id="f2elogo" v-bind:style="{'position':titlePositon}">
+            <img align="left"  id="f2elogo" src="../assets/header/TheF2e_logo.png" v-bind:style="{'position':titlePositon}">
             <div v-for="(item, index) in options" :key='index' v-bind:id="`options`" v-bind:value="`${item}`" >
                 <div id="other" @mouseover="mouseOverTargetEvent($event)" @mouseleave="mouseLeaveTargetEvent($event)" @click="clickTargetEvent($event, item)">
                     {{ item }}
                 </div>
             </div>
         </div>
-    </div>
 </template>
 <script>
 import {OPTIONS_MAP_URL} from '../constants';
@@ -31,7 +29,7 @@ export default {
         this.options.push("關卡資訊");
     },
     mounted() {
-        window.addEventListener("scroll", this.handleScroll);
+        // window.addEventListener("scroll", this.handleScroll);
         window.onload = () => {
             var navbar = document.getElementById("navbar");
             console.log(navbar);
@@ -73,15 +71,14 @@ export default {
 #selected {
     background-color: gray;
 }
-
 #navbar {
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  left: 0px;
-  top: 0px;
-  background: #231815;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    width: 1920px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    background: #231815;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #f2elogo {
@@ -89,9 +86,8 @@ export default {
     width: 300.6px;
     height: 37.9px;
     left: 187px;
-    margin-top: 15px;
     top: 31px;
-    background: #231815;
+
 }
 
 #options {

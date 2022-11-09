@@ -1,7 +1,6 @@
 <template>
-      <div style="background-color:#1376D8; position: relative; width: 100%px; height: 878.57px;">
-          <img id="f2e4th" src="../assets/title/f2e4th.png">
-          <img id="w3school" src="../assets/title/w3school.png">
+      <div id="BigTitle" style="background-color:#1376D8;">
+          <img id="Title" src="../assets/title/Title.png">
           <img id="folder" src="../assets/title/folders.png" class="heart">
     </div>
 </template>
@@ -12,29 +11,37 @@ export default {
 </script>
 
 <style>
-    #f2e4th {
-      /* Group */
-      position: absolute;
-      left: 35%;
-      right: 0%;
-      top: 5%;
-      bottom: 59.72%;
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    #BigTitle {
+        /* 大標 */
+        position: relative;
+        width: 1113.71px;
+        height: 878.57px;
+    }
+    #Title {
+        /* 大標 */
+        position: relative;
+        width: 1113.71px;
+        height: 878.57px;
+        background-color:#1376D8;
     }
     #folder {
-      position: absolute;
-      left:45%;
-      right: 27.57%;
-      top: 43.1%;
-      bottom: 16.24%;
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      /* Group */
+        position: absolute;
+        left: 30.1%;
+        right: 27.57%;
+        top: 43.1%;
+        bottom: 16.24%;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
 
-    #w3school {
-      position: absolute;
-      left: 38%;
-      right: 7.27%;
-      top: 28.29%;
-      bottom: 0.12%;
+    .heart {
+      font-size: 150px;
+      animation: beat .25s infinite alternate;
+      transform-origin: center;
+    }
+
+    /* Heart beat animation */
+    @keyframes beat{
+        to { transform: scale(1.4); }
     }
 </style>
